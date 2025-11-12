@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "842578828696",
+    "project_id": "pideclaudia-e1921",
+    "storage_bucket": "pideclaudia-e1921.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842578828696:android:551a6a860cc89a7f161fed",
+        "android_client_info": {
+          "package_name": "com.waypoint.pide_claudia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADSGc_yE4uHe29WVyq75UWgrMQRRzim5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

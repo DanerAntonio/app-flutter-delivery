@@ -1,0 +1,56 @@
+Listado de rutas de carpetas
+El número de serie del volumen es 88E9-FF8A
+C:\USERS\DANERANTONIOMOSQUERA\DOWNLOADS\PIDE_CLAUDIA (1)\PIDE_CLAUDIA\LIB
+¦   firebase_options.dart
+¦   main.dart
+¦   
++---data
+¦       christian_messages.dart
+¦       mock_products.dart
+¦       
++---models
+¦       cart_item.dart
+¦       courier_account.dart
+¦       inventory_product.dart
+¦       order.dart
+¦       product.dart
+¦       
++---providers
+¦       cart_provider.dart
+¦       order_provider.dart
+¦       role_provider.dart
+¦       
++---screens
+¦       admin_home_screen.dart
+¦       admin_metrics_screen.dart
+¦       admin_orders_screen.dart
+¦       auth_gate.dart
+¦       custom_order_screen.dart
+¦       delivery_config_screen.dart
+¦       driver_home_screen.dart
+¦       driver_order_detail_screen.dart
+¦       driver_register_screen.dart
+¦       home_screen.dart
+¦       inventory_screen.dart
+¦       login_screen.dart
+¦       menu_screen.dart
+¦       migrate_products_to_firestore.dart
+¦       order_history_screen.dart
+¦       order_summary_screen.dart
+¦       order_tracking_screen.dart
+¦       product_detail_screen.dart
+¦       register_screen.dart
+¦       reset_password_screen.dart
+¦       
++---services
+¦       courier_credit_service.dart
+¦       ingredient_service.dart
+¦       inventory_service.dart
+¦       store_service.dart
+¦       store_settings_screen.dart
+¦       
++---widgets
+        courier_balance_card.dart.disabled.dart
+        product_card.dart
+        store_status_widget.dart
+        
