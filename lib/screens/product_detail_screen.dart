@@ -1,6 +1,7 @@
 // lib/screens/product_detail_screen.dart - VERSIÓN PREMIUM
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../models/product.dart';
 import '../providers/order_provider.dart';
 
@@ -79,45 +80,63 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
     return '\$${parts.join('.')}';
   }
 
-  void _addToCart(BuildContext context) {
-    final orderProvider = Provider.of<OrderProvider>(context, listen: false);
-    
-    for (int i = 0; i < _quantity; i++) {
-      orderProvider.addToCart(widget.product);
-    }
+ void _addToCart(BuildContext context) {
+  final orderProvider = Provider.of<OrderProvider>(context, listen: false);
 
+  // ✅ Verificamos si hay usuario logueado antes de agregar
+  final user = FirebaseAuth.instance.currentUser;
+  if (user == null) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(6),
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Icon(Icons.check_circle_rounded, color: Colors.white, size: 20),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                _quantity == 1
-                    ? '${widget.product.name} agregado al carrito'
-                    : '$_quantity ${widget.product.name} agregados al carrito',
-              ),
-            ),
-          ],
-        ),
-        backgroundColor: Colors.green.shade600,
+        content: const Text('Debes iniciar sesión para agregar productos al carrito.'),
+        backgroundColor: Colors.redAccent,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         margin: const EdgeInsets.all(16),
         duration: const Duration(seconds: 2),
       ),
     );
-
-    Navigator.pop(context);
+    return; // 🔒 Sale de la función, no agrega nada
   }
+
+  // ✅ Si está logueado, se agrega normalmente
+  for (int i = 0; i < _quantity; i++) {
+    orderProvider.addToCart(widget.product, context);
+  }
+
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: const Icon(Icons.check_circle_rounded, color: Colors.white, size: 20),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              _quantity == 1
+                  ? '${widget.product.name} agregado al carrito'
+                  : '$_quantity ${widget.product.name} agregados al carrito',
+            ),
+          ),
+        ],
+      ),
+      backgroundColor: Colors.green.shade600,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      margin: const EdgeInsets.all(16),
+      duration: const Duration(seconds: 2),
+    ),
+  );
+
+  Navigator.pop(context);
+}
+
 
   Color _getCategoryColor(String category) {
     switch (category.toLowerCase()) {
