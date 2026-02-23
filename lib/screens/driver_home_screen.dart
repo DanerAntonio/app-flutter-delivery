@@ -20,7 +20,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> with TickerProvider
   late Animation<double> _fadeAnimation;
 
   // Dirección fija de la tienda
-  final String storeAddress = "diagonal 43 avenida 34E-20 torre 4 apartamento 9928 unidad residencial cuarzo en bello Antioquia";
+  final String storeAddress = "diagonal 43 avenida 34E-20 torre 3 apartamento 819 unidad residencial cuarzo en bello Antioquia";
   final String storeName = "La Cocina de Claudia";
   final String storePhone = "+573112762618";
   
